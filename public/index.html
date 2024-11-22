@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* https://coolors.co/2c3e50-FF0000-ffffff-3498db-95a3b3 */
+
+        /* ========================
+        Utilities
+        ======================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        div::after,
+        ul::after {
+            display: block;
+            clear: both;
+            visibility: visible;
+
+        }
+
+        html {
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* ========================
+        Global
+        ======================== */
+
+        body {
+            color: #444;
+            font-family: Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ul,
+        ol,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            font-weight: 900;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        a,
+        a:hover,
+        a:focus,
+        a:active,
+        a:visited {
+            color: #FF0000;
+            text-decoration: none;
+        }
+
+        /* ========================
+        Containers
+        ======================== */
+
+        .container-fluid {
+            padding: 0 1em;
+        }
+
+        .container {
+            margin: 0 auto;
+        }
+
+        /* ========================
+        Navigation
+        ======================== */
+
+        @keyframes show-header {
+            0% {
+                top: -4em;
+                opacity: 0;
+            }
+
+            100% {
+                top: 0;
+                opacity: 1;
+            }
+        }
+
+        nav {
+            background-color: #ff0000;
+            /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.45); */
+            position: relative;
+            top: 0;
+        }
+
+        nav a,
+        nav a:hover,
+        nav a:focus,
+        nav a:active,
+        nav a:visited {
+            text-decoration: none;
+        }
+
+        nav .brand {
+            display: inline-block;
+            float: left;
+            font-size: 1.25em;
+            font-weight: 900;
+        }
+
+        nav .brand a {
+            color: #444;
+            display: block;
+            padding: 1em 0;
+        }
+
+        nav .nav-toggle {
+            color: #444;
+            cursor: pointer;
+            display: inline-block;
+            float: right;
+            font-size: 1.25em;
+            padding: 1em 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            clear: both;
+            list-style: none;
+            margin: 0 -1em;
+            padding: 0;
+            z-index: 999;
+        }
+
+        nav ul li {
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        nav ul li a {
+            color: #444;
+            display: block;
+            padding: 0.75em;
+        }
+
+        nav.sticky {
+            animation: show-header 0.5s ease;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .brand {
+            width: 15%;
+        }
+
+        /* ========================
+        Sections
+        ======================== */
+
+        .splash {
+            background: linear-gradient(rgba(44, 62, 80, 0.65), rgba(52, 152, 219, 0.65)),
+                url("images/banner.jpg") no-repeat fixed center;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .profile-image {
+            border-radius: 50%;
+            display: block;
+            max-width: 200px;
+            margin: 0 auto 1em;
+            width: 100%;
+        }
+
+        .splash h1 {
+            font-size: 58px;
+            line-height: 68px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .splash .lead,
+        .splash .continue {
+            font-size: 32px;
+            line-height: 40px;
+            display: block;
+            margin-bottom: 1em;
+        }
+
+        .splash .continue a {
+            border: 4px solid #fff;
+            border-radius: 100%;
+            color: #fff;
+            display: flex;
+            text-decoration: none;
+            width: 50px;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .splash .continue a:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .intro,
+        .features,
+        .portfolio,
+        .contact {
+            text-align: center;
+        }
+
+        .intro {
+            background-color: #FF0000;
+            color: #fff;
+        }
+
+        .intro a,
+        .intro a:hover,
+        .intro a:focus,
+        .intro a:active,
+        .intro a:visited {
+            color: #fff;
+        }
+
+        .features img {
+            display: block;
+            margin: 0 auto 1em;
+            max-width: 200px;
+        }
+
+        .features .col-3 {
+            margin: 3em auto;
+            width: 100%;
+        }
+
+        .portfolio {
+            color: #0e0e0e;
+            margin-bottom: 100px;
+        }
+
+        .gallery .gallery-image img {
+            background-color: #00843D0F;
+            border-radius: 4px;
+            display: block;
+            height: auto;
+            padding: 6px;
+            width: 100%;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        .contact form {
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            border-top: 8px solid #FF0000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            padding: 1em;
+        }
+
+        .contact form input,
+        .contact form textarea {
+            border: none;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 20px;
+            padding: 20px;
+            width: 100%;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .contact form textarea {
+            height: 150px;
+            line-height: 25px;
+            resize: none;
+            outline: none;
+        }
+
+        .contact form input[type="submit"] {
+            background-color: #00843D;
+            border-radius: 0;
+            color: #fff;
+            padding: 1em;
+            text-transform: uppercase;
+            transition: all .5s ease-in-out;
+            border-radius: 4px;
+        }
+
+        .contact form input[type="submit"]:hover {
+            background-color: #FF0000;
+        }
+
+        #contact h2 {
+            font-size: 35px;
+            color: #000000;
+            line-height: 40px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* ========================
+        Footer
+        ======================== */
+
+        .footer {
+            background-color: #2c3e50;
+            color: #fff;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .footer .container {
+            padding: 1em 0;
+        }
+
+        .footer a {
+            color: #fff;
+            margin-right: 1em;
+        }
+
+        .footer a:last-of-type {
+            margin-right: 0;
+        }
+
+        #splash .container {
+            padding: 40px 0 !important;
+        }
+
+        .Challenges {
+            padding: 100px 0;
+        }
+
+        .Challenges h2 {
+            text-align: center;
+            font-size: 45px;
+            line-height: 50px;
+            margin-bottom: 50px;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .Challenges ul {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-left: 0;
+            margin-bottom: 50px;
+        }
+
+        .Challenges ul li {
+            width: 50%;
+            font-size: 22px;
+            line-height: 35px;
+            list-style-type: none;
+        }
+
+        .Challenges ul li svg {
+            margin-right: 10px;
+        }
+
+        .from-btn {
+            margin: 0 auto;
+            display: table;
+        }
+
+        .from-btn a {
+            padding: 20px 30px;
+            border-radius: 4px;
+            color: #fff;
+            background-color: #00843D;
+            transition: all .3s ease-in-out;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .from-btn a:hover {
+            background-color: #FF0000;
+        }
+
+
+        .service-main {
+            margin-bottom: 100px;
+        }
+
+        .service-main h2 {
+            text-align: center;
+            font-size: 45px;
+            line-height: 50px;
+            margin-bottom: 50px;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .service_icon svg {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .service_icon svg path {
+            fill: #000000 !important;
+        }
+
+        .service_icon svg mask path {
+            fill: #000000 !important;
+        }
+
+        .services {
+            padding: 30px;
+            background-color: #FF00000A;
+            height: 100%;
+            transition: all .3s ease-in-out;
+            border-radius: 4px;
+        }
+
+        .services:hover {
+            background-color: #ff0000;
+            color: #FFF;
+        }
+
+        .services h3 {
+            font-size: 70px;
+            transition: all .3s ease-in-out;
+            display: none;
+        }
+
+        .services-icon {
+            margin-bottom: 15px;
+        }
+
+        .services-icon svg path {
+            transition: all .3s ease-in-out;
+        }
+
+        .services:hover .services-icon svg path {
+            fill: #FFF;
+        }
+
+        .services h4 {
+            padding-bottom: 10px;
+            color: #212529;
+            font-size: 22px;
+            line-height: 30px;
+            font-weight: 600;
+            transition: all .3s ease-in-out;
+        }
+
+        .services p {
+            font-size: 16px;
+            line-height: 22px;
+            margin-bottom: 0;
+            color: #535353;
+            transition: all .3s ease-in-out;
+        }
+
+        .services:hover h3 {
+            color: #fff;
+        }
+
+        .services:hover h4 {
+            color: #fff;
+        }
+
+        .services:hover p {
+            color: #fff;
+        }
+
+        .service-main .from-btn {
+            margin-top: 40px;
+        }
+
+        /* .Challenges h2 span{
+        padding: 10px;
+        background: #FF0000;
+        color: #fff;
+        font-weight: 600;
+        } */
+        .choose {
+            margin-bottom: 100px;
+        }
+
+        .choose h2 {
+            text-align: center;
+            font-size: 45px;
+            line-height: 50px;
+            margin-bottom: 30px;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .portfolio h2 {
+            text-align: center;
+            font-size: 45px;
+            line-height: 50px;
+            margin-bottom: 30px;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .last-part {
+            margin-bottom: 100px;
+        }
+
+        .last-part h2 {
+            text-align: center;
+            font-size: 45px;
+            line-height: 50px;
+            margin-bottom: 30px;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .choose ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .choose ul li {
+            width: 49%;
+            background-color: #00843D;
+            color: #fff;
+            padding: 35px 0;
+            border-radius: 50px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 500;
+            list-style-type: none;
+        }
+
+        .choose ul li svg {
+            margin-right: 10px;
+        }
+
+        footer {
+            padding: 50px 0;
+            background-color: #000000;
+        }
+
+        footer p {
+            font-size: 14px;
+            line-height: 20px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        footer a {
+            font-size: 16px;
+            line-height: 20px;
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        .gallery-image {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+
+        nav ul li a {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            border: solid 1px #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+        }
+
+        nav ul li a svg {
+            width: 20px;
+            height: 19px;
+        }
+
+        /* ========================
+        Media Queries
+        ======================== */
+
+        @media (max-width: 1600px) {
+
+            .brand {
+                width: 12%;
+            }
+
+            nav ul li a {
+                width: 40px;
+                height: 40px;
+            }
+
+            nav ul li a svg {
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        @media (max-width: 992px) {
+
+            .Challenges h2,
+            .choose h2,
+            .service-main h2,
+            .portfolio h2,
+            .last-part h2 {
+                font-size: 40px;
+            }
+
+            .Challenges ul li {
+                width: 100%;
+            }
+
+            .choose ul li {
+                width: 48%;
+                padding: 25px 0;
+                margin: 10px 0;
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .brand {
+                width: 20%;
+            }
+
+            .splash h1 {
+                font-size: 42px;
+                line-height: 52px;
+            }
+
+            .splash .lead,
+            .splash .continue {
+                font-size: 25px;
+                line-height: 35px;
+            }
+
+            #contact h2 {
+                font-size: 30px;
+            }
+
+            .contact form {
+                box-shadow: none;
+            }
+
+            .Challenges h2,
+            .choose h2,
+            .service-main h2,
+            .portfolio h2,
+            .last-part h2 {
+                font-size: 32px;
+                line-height: 40px;
+                margin-bottom: 25px;
+            }
+
+            .Challenges ul li {
+                font-size: 18px;
+                line-height: 30px;
+                list-style-type: none;
+            }
+
+            .Challenges {
+                padding: 50px 0;
+            }
+
+            .Challenges ul {
+                margin-bottom: 30px;
+            }
+
+            .from-btn a {
+                font-size: 15px;
+            }
+
+            .choose ul li {
+                width: 100%;
+            }
+
+            .service-main {
+                margin-bottom: 50px;
+            }
+
+            .choose {
+                margin-bottom: 50px;
+            }
+
+            .portfolio {
+                margin-bottom: 50px;
+            }
+
+            .last-part {
+                margin-bottom: 50px;
+            }
+
+            .Challenges ul li {
+                width: 100%;
+            }
+
+        }
+
+        @media (max-width: 420px) {
+
+            .brand {
+                width: 30%;
+            }
+
+            .splash h1 {
+                font-size: 30px;
+                line-height: 40px;
+            }
+
+            .splash .lead,
+            .splash .continue {
+                font-size: 17px;
+                line-height: 27px;
+            }
+
+            #splash .container {
+                padding: 30px 0 !important;
+            }
+
+            .contact form input,
+            .contact form textarea {
+                border: none;
+                border-radius: 4px;
+                display: block;
+                margin-bottom: 10px;
+                padding: 15px;
+                width: 100%;
+                font-size: 12px;
+                outline: none;
+            }
+
+
+            .Challenges h2,
+            .choose h2,
+            .service-main h2,
+            .portfolio h2,
+            .last-part h2 {
+                font-size: 22px;
+                line-height: 30px;
+                margin-bottom: 20px;
+            }
+
+            .Challenges ul li {
+                font-size: 13px;
+                line-height: 30px;
+                list-style-type: none;
+                font-weight: 500;
+            }
+
+            .Challenges {
+                padding: 50px 0;
+            }
+
+            .Challenges ul {
+                margin-bottom: 30px;
+            }
+
+            .from-btn a {
+                font-size: 13px;
+            }
+
+            .services h3 {
+                font-size: 60px;
+                transition: all .3s ease-in-out;
+            }
+
+            .choose ul li {
+                padding: 20px 0;
+                margin: 7px 0;
+                font-size: 17px;
+            }
+
+            .service-main {
+                margin-bottom: 50px;
+            }
+
+            .choose {
+                margin-bottom: 50px;
+            }
+
+            .portfolio {
+                margin-bottom: 50px;
+            }
+
+            .last-part {
+                margin-bottom: 50px;
+            }
+
+            .Challenges ul li {
+                width: 100%;
+            }
+            .about {
+                color: #000000;
+            }
+            .cmenu {
+                color: #fff !important;
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script>
+        ////////////////////////////////////
+        // NAVIGATION SHOW/HIDE
+
+        $("nav ul").hide();
+
+        $(".nav-toggle").click(function () {
+            $("nav ul").slideToggle("medium");
+        });
+
+        $("nav ul li a, .brand a").click(function () {
+            $("nav ul").hide();
+        });
+
+        ////////////////////////////////////
+        // SMOOTH SCROLLING WITH NAV HEIGHT OFFSET
+
+        $(function () {
+            var navHeight = $("nav").outerHeight();
+            $('a[href*="#"]:not([href="#"])').click(function () {
+                if (
+                    location.pathname.replace(/^\//, "") ==
+                    this.pathname.replace(/^\//, "") &&
+                    location.hostname == this.hostname
+                ) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+                    if (target.length) {
+                        $("html, body").animate(
+                            {
+                                scrollTop: target.offset().top - navHeight
+                            },
+                            1000
+                        );
+                        return false;
+                    }
+                }
+            });
+        });
+
+        ////////////////////////////////////
+        // NAVIGATION STICKY
+
+        var viewHeight = $(window).height();
+        var navigation = $("nav");
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > viewHeight - 175) {
+                //edit for nav height
+                navigation.addClass("sticky");
+            } else {
+                navigation.removeClass("sticky");
+            }
+        });
+
+        ////////////////////////////////////////////////
+        // MAKE THE SPLASH CONTAINER VERTICALLY CENTERED
+
+        function centerSplash() {
+            var navHeight = $("nav").outerHeight();
+            var splashHeight = $(".splash .container").height();
+            var remainingHeight = $(window).height() - splashHeight - navHeight;
+            $(".splash .container").css({
+                "padding-top": remainingHeight / 2,
+                "padding-bottom": remainingHeight / 2
+            });
+        }
+
+        $(document).ready(function () {
+            centerSplash();
+        });
+
+        $(window).resize(function () {
+            centerSplash();
+        });
+
+    </script>
+</body>
+
+</html>
